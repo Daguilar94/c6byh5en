@@ -1,5 +1,5 @@
 module Api
-  module V1
+  module V1 
     class ProductsController < ApplicationController
       protect_from_forgery with: :null_session
 
@@ -7,7 +7,7 @@ module Api
         @products = Product.all
         render json: @products
       end
-      
+
     end
   end
 end
