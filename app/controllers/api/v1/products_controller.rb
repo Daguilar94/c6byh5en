@@ -5,9 +5,11 @@ module Api
 
 
       def index
-        {format: 'json'}
         @products = Product.all
         render json: @products
+        # respond_to |format| do
+        #   format.json {render json: @products}
+        # end
       end
     end
   end
