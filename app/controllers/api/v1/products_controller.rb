@@ -11,7 +11,7 @@ module Api
       def create
         product = Product.new(safe_params)
         if product.save
-          render json: product
+          render json: product, status: 201
         else
           render json: { errors: product.errors }, status: 422
         end
