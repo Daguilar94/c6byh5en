@@ -23,6 +23,7 @@ module Api
           render json: product, status: 200
         else
           render json: {errors: product.errors}, status: 422
+        end
       end
 
       def delete
