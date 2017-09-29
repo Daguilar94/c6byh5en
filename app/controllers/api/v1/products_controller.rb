@@ -17,6 +17,20 @@ module Api
         end
       end
 
+      def edit
+        product = Product.find(params[:id])
+        if product.update(safe_params)
+          render json: {product}, status: 200
+        else
+          render json: {errors: product.errors}, status: 422
+      end
+
+      def delete
+        product = Product.find(params[:id])
+        product.destroy, status: 204
+        head :no_content
+      end
+
       private
       def safe_params
         params.require(:product).permit(:name, :price)
