@@ -1,5 +1,5 @@
 module Api
-  module V1 
+  module V1
     class ProductsController < ApplicationController
       protect_from_forgery with: :null_session
 
@@ -8,6 +8,19 @@ module Api
         render json: @products
       end
 
+      def create
+        product = Product.new(safe_params)
+        if product.save
+          render json: product
+        else
+          render json: { errors: product.errors }, status: 422
+        end
+      end
+
+      private
+      def safe_params
+        params.require(:product).permit(:name, :price)
+      end
     end
   end
 end
