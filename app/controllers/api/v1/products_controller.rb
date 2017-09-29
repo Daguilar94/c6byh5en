@@ -20,7 +20,7 @@ module Api
       def edit
         product = Product.find(params[:id])
         if product.update(safe_params)
-          render json: {product}, status: 200
+          render json: product, status: 200
         else
           render json: {errors: product.errors}, status: 422
       end
